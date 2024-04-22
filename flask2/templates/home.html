@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="text text-white text-center">
+    <h1 id="h">Météo ESSAOUIRA</h1>
+    <h2 id="h">{{ lyouma }} : <span>{{ dateLyouma }}</span></h2>
+</div>
+
+<div class="row text text-white card-body d-flex align-items-center justify-content-center ">
+    
+    {% for i in range(0, 8) %}
+    <div class="col bordure">
+        <div class="border border-info text-center ">
+            <p><h3>{{ datameteo[i]['temps'] }}</h3></p>
+            <p><h3><img src="{{ datameteo[i]['image'] }}" alt="soleil" class="img-fluid" /></h3></p>
+            <p><h3>{{ datameteo[i]['temperature'] }} °</h3></p>
+            <p><h3>{{ datameteo[i]['wind'] }} Km/h</h3></p>
+            {% if datameteo[i]['precipitation'] != 0 %}
+            <p><img src="static/images/rain.png" alt="umbrella" width="10%" />{{ datameteo[i]['precipitation'] }} %</p>
+            {% else %}
+            <p><h3>{{ datameteo[i]['precipitation'] }} %</h3></p>
+            {% endif %}
+            <p><h3>{{ datameteo[i]["precipitation"] }} mm</h3></p>
+        </div>
+    </div>
+    {% endfor %}
+    
+</div>
+{% endblock content %}
